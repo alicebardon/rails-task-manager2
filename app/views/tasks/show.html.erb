@@ -1,0 +1,24 @@
+<% if notice.present? %>
+  <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice">
+    <%= notice %>
+  </p>
+<% end %>
+
+<h1> <%= @task.title %></h1>
+
+<h4>Details :</h4>
+<%= @task.details %>
+
+  <% if @task.completed %>
+    <i class="fa-regular fa-square-check"></i> This task is completed
+  <% else %>
+    <i class="fa-regular fa-square"></i> This task is not completed yet
+  <% end %>
+
+<br>
+<%= link_to "Back to full list", tasks_path %>
+<%= link_to "Edit #{@task.title}", edit_task_path %>
+<%= link_to "Delete",
+  task_path(@task),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>

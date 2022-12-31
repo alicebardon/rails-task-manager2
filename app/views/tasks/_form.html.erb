@@ -1,0 +1,10 @@
+  <div class="block">
+<%= simple_form_for(task) do |f| %>
+  <%= f.input :title, input_html: { class: 'inline-block w-96 px-3 py-2 mt-2 shadow rounded-md border border-gray-200 outline-none' } %>
+  <%= f.input :details, input_html: { class: 'inline-block w-96 px-3 py-2 mt-2 shadow rounded-md border border-gray-200 outline-none' } %>
+  <%= f.check_box :completed, placeholder: "Completed",
+                  class: "mr-2 align-middle bg-gray-50 border-gray-300 focus:ring-3 focus:ring-blue-300 h-5 w-5 rounded checked:bg-green-500" %>
+                  <p>Completed</p>
+  <%= f.button :submit, input_html: { class: 'btn py-2 ml-2 bg-blue-600 text-white' } %>
+<% end %>
+</div>
