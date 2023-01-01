@@ -1,24 +1,39 @@
-<% if notice.present? %>
-  <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice">
-    <%= notice %>
-  </p>
-<% end %>
-
-<h1> <%= @task.title %></h1>
-
-<h4>Details :</h4>
-<%= @task.details %>
-
-  <% if @task.completed %>
-    <i class="fa-regular fa-square-check"></i> This task is completed
-  <% else %>
-    <i class="fa-regular fa-square"></i> This task is not completed yet
+<div class="">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice">
+      <%= notice %>
+    </p>
   <% end %>
 
-<br>
-<%= link_to "Back to full list", tasks_path %>
-<%= link_to "Edit #{@task.title}", edit_task_path %>
-<%= link_to "Delete",
-  task_path(@task),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-%>
+  <%= link_to "Back to full list", tasks_path, class: "mb-3 rounded-lg px-2 inline-block font-medium text-center cursor-pointer bg-purple-200" %>
+
+  <div class="task_card dark:bg-slate-800 border border-grey-200 dark:text-purple-200 dark:border-purple-200 rounded-md p-3 bg-purple-100 drop-shadow-xl flex flex-row w-3/5">
+
+    <div class="task">
+      <h1 class="font-bold text-4xl">
+        <%= @task.title %>
+      </h1>
+      <p class="mt-3">
+        <%= @task.details %>
+      </p>
+    </div>
+
+    <div class="links flex flex-col text-white ">
+        <div class="btn bg-emerald-300 dark:bg-slate-900 hover:bg-emerald-400 dark:text-emerald-300 border dark:border-emerald-300">
+          <% if @task.completed %>
+            <i class="fa-regular fa-square-check"></i> Completed.
+          <% else %>
+            <i class="fa-regular fa-square"></i> Completed?
+          <% end %>
+      </div>
+
+      <%= link_to "Edit", edit_task_path, class: "btn bg-purple-300 hover:bg-purple-400 dark:bg-slate-900 dark:text-purple-300 border dark:border-purple-300" %>
+      <%= link_to "Delete",
+        task_path(@task),
+        class: "btn bg-red-300 dark:bg-slate-900 hover:bg-red-400 dark:text-red-300 border dark:border-red-300",
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+      %>
+    </div>
+
+  </div>
+</div>

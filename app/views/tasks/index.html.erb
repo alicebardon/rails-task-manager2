@@ -6,10 +6,11 @@
 
 
 <h1 class="font-bold text-2xl"> Task Manager</h1>
+<%= link_to "Create new one", tasks_new_path %>
 
 <ul>
   <% @tasks.each do |task| %>
-    <li>
+    <li class="border border-grey-200 rounded-md p-3 bg-grey-100 shadow mt-1 ">
       <% if task.completed? %>
         <i class="fa-regular fa-square-check"></i>
       <% else %>
@@ -19,5 +20,3 @@
     </li>
   <% end %>
 </ul>
-
-<%= link_to "Create new one", tasks_new_path %>
